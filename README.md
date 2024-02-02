@@ -10,7 +10,11 @@ python3 main.py
 ```sh
 git  clone
 cd app
+#Create virtual environment
+python -m venv env
+#Activate virtual environment
 source env/bin/activate
+#Install dependences
 pip3 install -r requirements.txt
 python main.py
 ```
