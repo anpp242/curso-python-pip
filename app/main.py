@@ -1,15 +1,25 @@
 import utils
 import read_csv
 import charts
+import pandas as pd
 
 
 def run():
-  data = read_csv.read_csv('./data.csv')
+  '''
   data = list(
       filter(lambda country: country['Continent'] == 'South America', data))
   country = input('Escribe un pais:\n ')
 
-  result = utils.populationByCountry(data, country)
+  '''
+  dataFrames =  pd.read_csv('./data.csv' )
+  dataFrames = dataFrames[dataFrames['Continent'] == 'Africa']
+
+  country = dataFrames['Country/Territory'].values
+  porcetages = dataFrames['World Population Percentage'].values
+
+  charts.generate_pie_chart(country, porcetages)
+
+  result = utils.populationByCountry(country, country)
 
   if (len(result) > 0):
     labels, values = utils.get_population_by_country(result)

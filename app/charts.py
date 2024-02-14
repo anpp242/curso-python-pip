@@ -18,4 +18,3 @@ if __name__ == '__main__':
   labels = ['a', 'b', 'c']
   values = [50, 89, 301]
   generate_pie_chart(labels, values)
-  #generate_bar_chart(labels, values)
