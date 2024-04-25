@@ -1,16 +1,16 @@
 name: Flujo de trabajo para PR a Master
 
 on:
+  pull_request_review:
   pull_request:
     branches:
       - master
-
+    types: [opened,ready_for_review, synchronize, reopened,labeled,unlabeled]
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout del código
-        uses: actions/checkout@v2
-
-      - name: Otros pasos
-        run: echo "Aquí puedes añadir otros pasos según necesites"
+  reviewers:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v1
+      - uses: uesteibar/reviewer-lottery@v3
+        with:
+          repo-token: ${{ secrets.AUTO_REVIEWERS_TOKEN }}
