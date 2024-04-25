@@ -27,9 +27,3 @@ jobs:
                     source: '.owners'
                     ignore: |
                       CHANGELOG.md
-                    labels: |
-                        {
-                          "reviewers:projects": "**/projects/*",
-                          "reviewers:platform": "/"
-                        }
-                    path: 'projects/directory-containing-owners'
