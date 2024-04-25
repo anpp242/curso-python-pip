@@ -7,15 +7,6 @@ on:
       - master
     types: [opened,ready_for_review, synchronize, reopened,labeled,unlabeled]
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout del código
-        uses: actions/checkout@v2
-
-      - name: Otros pasos
-        run: echo "Aquí puedes añadir otros pasos según necesites"
-
   reviewers:
       runs-on: ubuntu-latest
       steps:
