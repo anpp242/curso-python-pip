@@ -1,0 +1,16 @@
+name: Flujo de trabajo para PR a Master
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v2
+
+      - name: Otros pasos
+        run: echo "Aquí puedes añadir otros pasos según necesites"
