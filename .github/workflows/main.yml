@@ -1,10 +1,11 @@
 name: Flujo de trabajo para PR a Master
 
 on:
+  pull_request_review:
   pull_request:
     branches:
       - master
-
+    types: [opened,ready_for_review, synchronize, reopened,labeled,unlabeled]
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -14,3 +15,22 @@ jobs:
 
       - name: Otros pasos
         run: echo "Aquí puedes añadir otros pasos según necesites"
+
+  reviewers:
+          name: Reviewers
+          runs-on: ubuntu-latest
+          steps:
+              - uses: actions/checkout@v2
+              - uses: zattoo/reviewers@levels
+                with:
+                    token: ${{secrets.TOKEN}}
+                    source: '.owners'
+                    ignore: |
+                      CHANGELOG.md
+                      Another file
+                    labels: |
+                        {
+                          "reviewers:projects": "**/projects/*",
+                          "reviewers:platform": "/"
+                        }
+                    path: 'projects/directory-containing-owners'
